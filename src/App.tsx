@@ -127,6 +127,7 @@ const App: FC = () => {
         onReady={onReady}
         onPlay={onPlay}
         opts={{
+          host: "https://www.youtube-nocookie.com",
           vq: "tiny",
           width: 10,
           height: 10,
