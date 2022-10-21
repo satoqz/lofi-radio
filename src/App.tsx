@@ -89,6 +89,7 @@ const App: FC = () => {
 
   const onPlay = () => {
     setPlaying(true);
+    setMuted(false);
   };
 
   const player = useRef<YouTubePlayer>(null);
