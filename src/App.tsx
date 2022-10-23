@@ -64,51 +64,35 @@ const App: FC = () => {
     }
   };
 
-  const [playing, setPlaying] = useState(false);
-
-  const pause = () => setPlaying(false);
-  const play = () => setPlaying(true);
-
+  const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(false);
-
-  const mute = () => setMuted(!muted);
-
   const [volume, setVolume] = useState(50);
-
-  const decreaseVolume = () =>
-    setVolume((volume) => (volume >= 5 ? volume - 5 : volume));
-
-  const increaseVolume = () =>
-    setVolume((volume) => (volume <= 95 ? volume + 5 : volume));
-
-  const onReady = (event: YouTubeEvent) => {
-    event.target.playVideo();
-    event.target.setVolume(volume);
-    player.current = event.target;
-  };
-
-  const onPlay = () => {
-    setPlaying(true);
-    setMuted(false);
-  };
 
   const player = useRef<YouTubePlayer>(null);
 
-  useEffect(() => {
-    if (player.current) {
-      player.current.setVolume(volume);
-    }
-  }, [player, volume]);
+  const onReady = ({ target }: YouTubeEvent) => {
+    player.current = target;
 
-  useEffect(() => {
-    if (player.current) {
-      if (playing) {
-        player.current.playVideo();
-      } else {
-        player.current.pauseVideo();
-      }
+    if (!playing) {
+      player.current.pauseVideo();
     }
-  }, [player, playing]);
+
+    if (muted) {
+      player.current.mute();
+    } else {
+      player.current.unMute();
+    }
+
+    player.current.setVolume(volume);
+  };
+
+  const pause = () => player.current && player.current.pauseVideo();
+  const play = () => player.current && player.current.playVideo();
+
+  const onPlay = () => setPlaying(true);
+  const onPause = () => setPlaying(false);
+
+  const mute = () => setMuted(!muted);
 
   useEffect(() => {
     if (player.current) {
@@ -118,7 +102,19 @@ const App: FC = () => {
         player.current.unMute();
       }
     }
-  }, [player, muted]);
+  }, [muted, player]);
+
+  const decreaseVolume = () =>
+    setVolume((volume) => (volume >= 5 ? volume - 5 : volume));
+
+  const increaseVolume = () =>
+    setVolume((volume) => (volume <= 95 ? volume + 5 : volume));
+
+  useEffect(() => {
+    if (player.current) {
+      player.current.setVolume(volume);
+    }
+  }, [volume, player]);
 
   return (
     <div id="app" unselectable="on">
@@ -126,6 +122,9 @@ const App: FC = () => {
         videoId={station.key}
         onReady={onReady}
         onPlay={onPlay}
+        onPause={onPause}
+        onEnd={nextStation}
+        onError={nextStation}
         opts={{
           host: "https://www.youtube-nocookie.com",
           vq: "tiny",
