@@ -116,6 +116,20 @@ const App: FC = () => {
     }
   }, [volume, player]);
 
+  useEffect(() => {
+    const space = (event: KeyboardEvent) => {
+      if (event.key == " ") {
+        if (playing) {
+          pause();
+        } else {
+          play();
+        }
+      }
+    };
+    window.addEventListener("keypress", space);
+    return () => window.removeEventListener("keypress", space);
+  }, [playing]);
+
   return (
     <div id="app" unselectable="on">
       <YouTube
