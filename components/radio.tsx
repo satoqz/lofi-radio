@@ -1,45 +1,21 @@
-import { gifs, stations } from "./data";
-import { useState, useRef, useEffect, type FC } from "react";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import YouTube, { type YouTubeEvent, type YouTubePlayer } from "react-youtube";
 
-const shuffle = <T,>(arr: T[]) => {
-  let i = arr.length;
+import { useInterval } from "../lib/hooks";
+import { gifs } from "../lib/data";
 
-  while (i !== 0) {
-    let rand = Math.floor(Math.random() * (i - 1)) + 1;
-    let swap = arr[i - 1];
-    arr[i - 1] = arr[rand];
-    arr[rand] = swap;
-    i--;
-  }
-
-  return arr;
+type Props = {
+  stations: Array<{ name: string; key: string }>;
 };
 
-const useInterval = (callback: () => any, interval: number) => {
-  const savedCallback = useRef<typeof callback>();
-
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    const tick = () => savedCallback.current && savedCallback.current();
-    if (interval) {
-      const id = setInterval(tick, interval);
-      return () => clearInterval(id);
-    }
-  }, [interval]);
-};
-
-const backgrounds = shuffle(gifs);
-
-const App: FC = () => {
-  const [background, setBackground] = useState(backgrounds[0]);
+export default function Radio({ stations }: Props) {
+  const [gif, setGif] = useState(gifs[0]);
 
   const nextBackground = () => {
-    const index = backgrounds.indexOf(background)!;
-    setBackground(backgrounds[index + 1]);
+    const index = gifs.indexOf(gif)!;
+    setGif(gifs[index + 1]);
   };
 
   useInterval(nextBackground, 60000);
@@ -144,16 +120,11 @@ const App: FC = () => {
           vq: "tiny",
           width: 10,
           height: 10,
-          playerVars: { autoplay: 1, origin: location.href },
+          playerVars: { autoplay: 1 },
         }}
         style={{ display: "none" }}
       />
-      <img
-        id="bg"
-        src={`gifs/${background}`}
-        alt="background"
-        draggable="false"
-      />
+      <img id="bg" src={`gifs/${gif}`} alt="background" draggable="false" />
       <div id="container">
         <a
           id="heading"
@@ -244,6 +215,4 @@ const App: FC = () => {
       </div>
     </div>
   );
-};
-
-export default App;
+}

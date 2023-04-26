@@ -1,3 +1,3 @@
 # `lofi-radio`
 
-50% rewrite 50% fork of https://github.com/anujrajak/lo-fi-radio
+Automatically curates a list of lofi radio streams from youtube and plays them back in a cozy interface.

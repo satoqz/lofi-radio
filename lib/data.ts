@@ -76,35 +76,4 @@ export const gifs = [
   "virtuaverse.gif",
   "youngatnight.gif",
   "zombies.gif",
-];
-
-export const stations = [
-  {
-    name: "Lofi Girl",
-    key: "jfKfPfyJRdk",
-  },
-  {
-    name: "the bootleg boy 2",
-    key: "ceqgwo7U28Y",
-  },
-  {
-    name: "Code Pioneers",
-    key: "8YA825ZNAIE",
-  },
-  {
-    name: "nostalgic",
-    key: "WDXPJWIgX-o",
-  },
-  {
-    name: "Chillhop Music",
-    key: "5yx6BWlEVcY",
-  },
-  {
-    name: "College Music - Lofi",
-    key: "MCkTebktHVc",
-  },
-  {
-    name: "College Music - Shiloh",
-    key: "epaP2LCCuVE",
-  },
-];
+].sort(() => Math.random() - 0.5);
