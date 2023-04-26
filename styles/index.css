@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
 html,
 body,
 #root,
@@ -11,7 +9,7 @@ body,
 
 body {
   margin: 0;
-  font-family: "Press Start 2P";
+  font-family: var(--font-press-start-2p);
 }
 
 #bg {
