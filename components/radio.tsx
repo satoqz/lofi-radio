@@ -40,7 +40,7 @@ export default function Radio({ stations }: Props) {
     }
   };
 
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(50);
 
