@@ -66,4 +66,4 @@ export const gifs = [
   "virtuaverse.gif",
   "youngatnight.gif",
   "zombies.gif",
-].sort(() => Math.random() - 0.5);
+];

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import YouTube, { type YouTubeEvent, type YouTubePlayer } from "react-youtube";
 
 import { useInterval } from "../lib/hooks";
@@ -11,14 +11,15 @@ type Props = {
 };
 
 export default function Radio({ stations }: Props) {
-  const [gif, setGif] = useState(gifs[0]);
+  const [gifIndex, setGifIndex] = useState<number | null>(null);
+  useEffect(() => {
+    setGifIndex(Math.floor(Math.random() * gifs.length));
+  }, []);
 
-  const nextBackground = () => {
-    const index = gifs.indexOf(gif)!;
-    setGif(gifs[index + 1]);
-  };
+  const nextGif = () =>
+    setGifIndex(gifIndex + 1 >= gifs.length ? 0 : gifIndex + 1);
 
-  useInterval(nextBackground, 60000);
+  useInterval(nextGif, 60000);
 
   const [station, setStation] = useState(stations[0]);
 
@@ -107,7 +108,7 @@ export default function Radio({ stations }: Props) {
   }, [playing]);
 
   return (
-    <div id="app" unselectable="on">
+    <div id="app" unselectable="on" style={{ backgroundColor: "black" }}>
       <YouTube
         videoId={station.key}
         onReady={onReady}
@@ -124,7 +125,14 @@ export default function Radio({ stations }: Props) {
         }}
         style={{ display: "none" }}
       />
-      <img id="bg" src={`gifs/${gif}`} alt="background" draggable="false" />
+      {gifIndex != null && (
+        <img
+          id="bg"
+          src={`gifs/${gifs[gifIndex]}`}
+          alt="background"
+          draggable="false"
+        />
+      )}
       <div id="container">
         <a
           id="heading"
