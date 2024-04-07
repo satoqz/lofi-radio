@@ -12,16 +12,16 @@ type Props = {
 
 export default function Radio({ stations }: Props) {
   const [gifIndex, setGifIndex] = useState<number | null>(null);
+  const [station, setStation] = useState(stations[0]);
+
   useEffect(() => {
     setGifIndex(Math.floor(Math.random() * gifs.length));
-  }, []);
+  }, [station]);
 
   const nextGif = () =>
     setGifIndex(gifIndex + 1 >= gifs.length ? 0 : gifIndex + 1);
 
   useInterval(nextGif, 60000);
-
-  const [station, setStation] = useState(stations[0]);
 
   const nextStation = () => {
     const index = stations.indexOf(station);
