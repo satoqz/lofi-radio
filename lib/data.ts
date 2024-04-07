@@ -1,3 +1,6 @@
+// to sync:
+// > ls public/gifs | awk {'print sprintf("\"%s\",", $1)'}
+
 export const gifs = [
   "adventure.gif",
   "ae_86.gif",
@@ -6,8 +9,7 @@ export const gifs = [
   "bad_landing.gif",
   "blade.gif",
   "bluebalcony.gif",
-  "bridge-day.gif",
-  "bridge-raining.gif",
+  "bridge_day.gif",
   "bridge.gif",
   "bridge_raining.gif",
   "cacao_and_coffee_shop.gif",
@@ -46,7 +48,6 @@ export const gifs = [
   "metro_final.gif",
   "nature.gif",
   "nightlytraining.gif",
-  "northlights.gif",
   "pilot.gif",
   "player2.gif",
   "robot_alley.gif",
@@ -54,12 +55,10 @@ export const gifs = [
   "sea.gif",
   "shootingstars.gif",
   "shop.gif",
-  "sleepy.gif",
   "spaceport.gif",
   "spaceship.gif",
   "streets.gif",
   "sushi.gif",
-  "technoir.gif",
   "thieves.gif",
   "train_city.gif",
   "troll_cave.gif",
