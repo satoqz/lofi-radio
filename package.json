@@ -8,16 +8,16 @@
     "format": "prettier -w ."
   },
   "dependencies": {
-    "next": "^13.4.19",
+    "next": "^14.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-youtube": "^10.1.0",
     "ytsr": "^3.8.4"
   },
   "devDependencies": {
-    "@types/node": "20.5.1",
-    "@types/react": "^18.2.20",
-    "prettier": "^3.0.2",
-    "typescript": "^5.1.6"
+    "@types/node": "^20.12.5",
+    "@types/react": "^18.2.74",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.4"
   }
 }
