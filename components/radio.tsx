@@ -131,6 +131,7 @@ export default function Radio({ stations }: Props) {
           src={`gifs/${gifs[gifIndex]}`}
           alt="background"
           draggable="false"
+          style={{ objectFit: "cover" }}
         />
       )}
       <div id="container">
