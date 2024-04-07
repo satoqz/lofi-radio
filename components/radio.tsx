@@ -7,7 +7,7 @@ import { useInterval } from "../lib/hooks";
 import { gifs } from "../lib/data";
 
 type Props = {
-  stations: Array<{ name: string; key: string }>;
+  stations: Array<{ title: string; id: string }>;
 };
 
 export default function Radio({ stations }: Props) {
@@ -110,7 +110,7 @@ export default function Radio({ stations }: Props) {
   return (
     <div id="app" unselectable="on" style={{ backgroundColor: "black" }}>
       <YouTube
-        videoId={station.key}
+        videoId={station.id}
         onReady={onReady}
         onPlay={onPlay}
         onPause={onPause}
@@ -144,7 +144,7 @@ export default function Radio({ stations }: Props) {
         </a>
         <a
           className="text margin"
-          href={`https://youtube.com/watch?v=${station.key}`}
+          href={`https://youtube.com/watch?v=${station.id}`}
           target="_blank"
         >
           <svg
@@ -157,7 +157,7 @@ export default function Radio({ stations }: Props) {
               fill="currentColor"
             />
           </svg>
-          {station.name}
+          {station.title}
         </a>
         <div className="flex-row">
           <div className="clickable margin" onClick={prevStation}>

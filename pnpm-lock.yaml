@@ -17,9 +17,9 @@ dependencies:
   react-youtube:
     specifier: ^10.1.0
     version: 10.1.0(react@18.2.0)
-  ytsr:
-    specifier: ^3.8.4
-    version: 3.8.4
+  youtube-sr:
+    specifier: ^4.3.10
+    version: 4.3.10
 
 devDependencies:
   '@types/node':
@@ -196,11 +196,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
-
-  /miniget@4.2.3:
-    resolution: {integrity: sha512-SjbDPDICJ1zT+ZvQwK0hUcRY4wxlhhNpHL9nJOB2MEAXRGagTljsO8MEDzQMTFf0Q8g4QNi8P9lEm/g7e+qgzA==}
-    engines: {node: '>=12'}
     dev: false
 
   /ms@2.0.0:
@@ -380,10 +375,6 @@ packages:
       - supports-color
     dev: false
 
-  /ytsr@3.8.4:
-    resolution: {integrity: sha512-rrJo59vDDf98mz/Cuw7Y2YiuTwSm3cs4XsXrP6yjYDXYup/aE0lRxY6XMKR3mGOHKwgLouZqFq8QRllVVVN88w==}
-    engines: {node: '>=8'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-    dependencies:
-      miniget: 4.2.3
+  /youtube-sr@4.3.10:
+    resolution: {integrity: sha512-YTpIWy2c1XLN4VpsUuZTDNXpJ2sLZQyG0kX1vq3nymHhDKro2SoeODey3pZazW+6AjfmNxoSnI8pCSzPrEa3jw==}
     dev: false

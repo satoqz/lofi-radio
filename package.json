@@ -12,7 +12,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-youtube": "^10.1.0",
-    "ytsr": "^3.8.4"
+    "youtube-sr": "^4.3.10"
   },
   "devDependencies": {
     "@types/node": "^20.12.5",
